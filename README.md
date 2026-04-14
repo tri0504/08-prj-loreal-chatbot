@@ -1,14 +1,32 @@
-# Project 8: L'Oréal Chatbot
+# L'Oréal Chatbot
 
-L’Oréal is exploring the power of AI, and your job is to showcase what's possible. Your task is to build a chatbot that helps users discover and understand L’Oréal’s extensive range of products—makeup, skincare, haircare, and fragrances—as well as provide personalized routines and recommendations.
+This project is a lightweight, browser-based chatbot experience inspired by L'Oréal beauty consulting. Users can ask about products, routines, ingredients, categories, shades, skincare, haircare, makeup, and fragrance recommendations.
 
-## 🚀 Launch via GitHub Codespaces
+The interface keeps a running conversation in the browser, remembers simple session details such as the user's name, and sends each request to a Cloudflare Worker that forwards the prompt to OpenAI.
 
-1. In the GitHub repo, click the **Code** button and select **Open with Codespaces → New codespace**.
-2. Once your codespace is ready, open the `index.html` file via the live preview.
+## Technologies Used
 
-## ☁️ Cloudflare Note
+- HTML for the page structure
+- CSS for the visual design and layout
+- Vanilla JavaScript for chatbot behavior, message rendering, and local storage
+- OpenAI GPT-4o for generating responses
+- Cloudflare Workers for the API proxy layer
+- Google Fonts and Material Icons for the UI styling
 
-When deploying through Cloudflare, make sure your API request body (in `script.js`) includes a `messages` array and handle the response by extracting `data.choices[0].message.content`.
+## How It Works
 
-Enjoy building your L’Oréal beauty assistant! 💄
+1. The user types a question into the chat form.
+2. `script.js` stores the message in browser `localStorage` so the conversation can persist during the session.
+3. The app sends a `messages` array to the Cloudflare Worker endpoint.
+4. The worker returns the OpenAI response, and the app displays `data.choices[0].message.content` in the chat window.
+
+## Run the App
+
+1. Open the repository in GitHub Codespaces or another local development environment.
+2. Open `index.html` in a browser or use the live preview in your editor.
+3. Enter a question and start chatting.
+
+## Notes
+
+- The chatbot is designed to stay focused on L'Oréal-related beauty topics.
+- If you are using your own Cloudflare Worker, update the API URL in `script.js`.
